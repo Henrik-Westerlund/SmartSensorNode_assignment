@@ -5,7 +5,7 @@
 
 int main()
 {
-    printf("Hello world\n");
+    tcp_client();
 
 
     return 0;
