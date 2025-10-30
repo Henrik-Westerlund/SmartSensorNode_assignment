@@ -11,7 +11,7 @@ int tcp_client(char* _Data, char* (*http_request)(char*))
     struct sockaddr_in serv_addr;
     char buffer[1024];
     memset(buffer, 0, sizeof(buffer));
-
+    
     char* message = http_request(_Data);
 
     sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -41,6 +41,8 @@ int tcp_client(char* _Data, char* (*http_request)(char*))
     read(sock, buffer, sizeof(buffer));
 
     close(sock);
+
+    printf("%s\n", buffer);
 
     return 0;
 }
