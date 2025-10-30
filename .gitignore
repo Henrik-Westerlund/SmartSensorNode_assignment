@@ -1,6 +1,8 @@
 *.d
 *.o
 
+*.json
+
 build/
 
 main
