@@ -1,1 +1,1 @@
-int tcp_client();
+int tcp_client(char* _Data, char* (*http_request)(char*));

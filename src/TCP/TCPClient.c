@@ -5,22 +5,15 @@
 
 #include "TCPClient.h"
 
-/* Skicka in en funktionspekare till en funktion som ligger i HTTPClient.c som bygger ihop en request kanske? */
-/* httpbin.org:     18.207.14.107 
-                    44.205.165.147
-                    3.227.143.56
-                    52.72.129.198
-*/
-int tcp_client()
+int tcp_client(char* _Data, char* (*http_request)(char*))
 {
     int sock;
     struct sockaddr_in serv_addr;
     char buffer[1024];
     memset(buffer, 0, sizeof(buffer));
 
-    /* char* message = "POST /HTTP_Methods/post_post HTTP/1.1\r\nHost: httpbin.org\r\n\r\n"; */
-    char* message = "GET / HTTP/1.1\r\nHost: httpbin.org\r\n\r\n";
-    
+    char* message = http_request(_Data);
+
     sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0)
     {
@@ -46,7 +39,6 @@ int tcp_client()
     send(sock, message, strlen(message), 0);
 
     read(sock, buffer, sizeof(buffer));
-    printf("Server: %s\n", buffer);
 
     close(sock);
 
