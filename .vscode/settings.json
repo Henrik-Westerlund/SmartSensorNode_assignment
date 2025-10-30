@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "http_client.h": "c",
-        "tcpclient.h": "c"
+        "tcpclient.h": "c",
+        "stdio.h": "c",
+        "httpclient.h": "c",
+        "inet.h": "c"
     }
 }
